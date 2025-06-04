@@ -20,6 +20,10 @@ def preprocess(img: Image.Image):
     img_array = np.array(img)
     return img_array.reshape(1, 40, 24, 3)
 
+@app.get("/")
+def read_root():
+    return {"message": "Solar Fault Detection API is live!"}
+
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     try:
